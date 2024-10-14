@@ -1,0 +1,21 @@
+# Ignore build directories
+bin/
+obj/
+
+# User-specific files
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code-specific files
+.vscode/
+
+# Docker specific files
+**/docker-compose.yml
+**/docker-compose.override.yml
+
+# Database connection config (if sensitive)
+appsettings.json
+
+# Log files
+*.log
