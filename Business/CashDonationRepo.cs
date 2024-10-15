@@ -16,15 +16,43 @@ namespace Business
             }
 
             using SqlConnection connection = DBConnection.GetConnection();
-            var command = new SqlCommand("INSERT INTO CashDonations (DonorName, Amount, DonationDate) VALUES (@DonorName, @Amount, @DonationDate)", connection);
 
-            // Use cash donation entity properties for the insert
-            command.Parameters.AddWithValue("@DonorName", cashDonation.DonorName);
-            command.Parameters.AddWithValue("@Amount", cashDonation.Amount);
-            command.Parameters.AddWithValue("@DonationDate", cashDonation.DonationDate);
+            using SqlTransaction transaction = connection.BeginTransaction();
 
+            try
+            {
+                // Insert into Donations table
+                var command = new SqlCommand(
+                    "INSERT INTO Donations (DonorName, Amount) OUTPUT INSERTED.Id VALUES (@DonorName, @Amount)",
+                    connection,
+                    transaction
+                );
 
-            return command.ExecuteNonQuery() > 0;
+                command.Parameters.AddWithValue("@DonorName", cashDonation.DonorName);
+                command.Parameters.AddWithValue("@Amount", cashDonation.Amount);
+
+                int donationId = (int)command.ExecuteScalar();
+
+                // Insert into CashDonations table
+                command = new SqlCommand(
+                    "INSERT INTO CashDonations (Id, DonationDate) VALUES (@Id, @DonationDate)",
+                    connection,
+                    transaction
+                );
+
+                command.Parameters.AddWithValue("@Id", donationId);
+                command.Parameters.AddWithValue("@DonationDate", cashDonation.DonationDate);
+
+                command.ExecuteNonQuery();
+
+                transaction.Commit();
+                return true;
+            }
+            catch
+            {
+                transaction.Rollback();
+                throw;
+            }
         }
     }
 }
