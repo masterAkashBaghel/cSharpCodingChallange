@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "codingChallange", "codingChallange\codingChallange.csproj", "{B25E0600-4855-429C-B121-13FE07AD7703}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exceptions", "Exceptions\Exceptions.csproj", "{0FD97CBE-5CFC-4B66-8A00-34138C6CBBEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DbConnection", "DbConnection\DbConnection.csproj", "{3FA9B2F6-AB56-4FB0-B6A7-0FFAFFD1C6A8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +40,13 @@ Global
 		{B25E0600-4855-429C-B121-13FE07AD7703}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B25E0600-4855-429C-B121-13FE07AD7703}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B25E0600-4855-429C-B121-13FE07AD7703}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FD97CBE-5CFC-4B66-8A00-34138C6CBBEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FD97CBE-5CFC-4B66-8A00-34138C6CBBEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FD97CBE-5CFC-4B66-8A00-34138C6CBBEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FD97CBE-5CFC-4B66-8A00-34138C6CBBEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FA9B2F6-AB56-4FB0-B6A7-0FFAFFD1C6A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FA9B2F6-AB56-4FB0-B6A7-0FFAFFD1C6A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FA9B2F6-AB56-4FB0-B6A7-0FFAFFD1C6A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FA9B2F6-AB56-4FB0-B6A7-0FFAFFD1C6A8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

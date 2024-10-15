@@ -1,0 +1,68 @@
+
+CREATE DATABASE NewPetPals;
+USE NewPetPals;
+
+CREATE TABLE Pets
+(
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL,
+    Age INT NOT NULL,
+    Breed NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Dogs
+(
+    Id INT PRIMARY KEY,
+    DogBreed NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (Id) REFERENCES Pets(Id)
+);
+
+CREATE TABLE Cats
+(
+    Id INT PRIMARY KEY,
+    CatColor NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (Id) REFERENCES Pets(Id)
+);
+
+CREATE TABLE Donations
+(
+    Id INT PRIMARY KEY IDENTITY,
+    DonorName NVARCHAR(100) NOT NULL,
+    Amount DECIMAL(18, 2) NOT NULL,
+);
+
+
+CREATE TABLE CashDonations
+(
+    Id INT PRIMARY KEY,
+    DonationDate DATETIME NOT NULL,
+    FOREIGN KEY (Id) REFERENCES Donations(Id)
+);
+
+CREATE TABLE ItemDonations
+(
+    Id INT PRIMARY KEY,
+    ItemType NVARCHAR(100) NOT NULL,
+    FOREIGN KEY (Id) REFERENCES Donations(Id)
+);
+
+CREATE TABLE AdoptionEvents
+(
+    Id INT PRIMARY KEY IDENTITY,
+    EventDate DATETIME NOT NULL
+);
+
+CREATE TABLE PetShelters
+(
+    Id INT PRIMARY KEY IDENTITY,
+    Name NVARCHAR(100) NOT NULL
+);
+
+CREATE TABLE PetShelterPets
+(
+    PetShelterId INT NOT NULL,
+    PetId INT NOT NULL,
+    PRIMARY KEY (PetShelterId, PetId),
+    FOREIGN KEY (PetShelterId) REFERENCES PetShelters(Id),
+    FOREIGN KEY (PetId) REFERENCES Pets(Id)
+);
